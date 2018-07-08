@@ -1,6 +1,7 @@
 package com.example.admin.credenz18;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class RegisterAdapter extends
 
         private List<Event> event;
     public List<Event> receipt=new ArrayList<>();
+    public int total=0;
 
     public RegisterAdapter(List<Event> events) {
             event = events;
@@ -49,20 +51,22 @@ public class RegisterAdapter extends
     }
     @Override
     public void onBindViewHolder(final RegisterAdapter.ViewHolder viewHolder, final int position) {
-        Event register = event.get(position);
+        final Event register = event.get(position);
         TextView textView = viewHolder.event;
         textView.setText(register.getName());
         textView = viewHolder.price;
         textView.setText(String.valueOf(register.getPrice()));
 
 
-
         viewHolder.box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 int pos = viewHolder.getAdapterPosition();
                 if(viewHolder.box.isChecked()){
                     receipt.add(event.get(pos));
+                    total+=event.get(pos).getPrice();
+
                 }else{
                     String temp=event.get(pos).getName();
                     for(int i=0;i<receipt.size();i++)

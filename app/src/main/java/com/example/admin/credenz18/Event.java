@@ -30,13 +30,13 @@ public class Event {
         events.add(new Event("  Cretronix",40));
         events.add(new Event("  Croodle",50));
         events.add(new Event("  MAD Talks",60));
-        events.add(new Event("  Network Treasure Hunt",70));
-        events.add(new Event("  Paper Presentation",80));
+        events.add(new Event("  NTH",70));
+        events.add(new Event("  Paper\n  Presentation",80));
         events.add(new Event("  Pixelate",90));
         events.add(new Event("  Roboliga",100));
-        events.add(new Event("  Reverse Coding",120));
+        events.add(new Event("  Reverse\n  Coding",120));
         events.add(new Event("  Quiz",130));
-        events.add(new Event("  Software Development",140));
+        events.add(new Event("  Software\n  Development",140));
         events.add(new Event("  Seminars",150));
         events.add(new Event("  Web Weaver",160));
         events.add(new Event("  Wall Street",170));

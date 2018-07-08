@@ -3,11 +3,6 @@ package com.example.admin.credenz18;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
@@ -20,9 +15,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,10 +36,20 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Spinner spinner = (Spinner) findViewById(R.id.college);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.colleges_array, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
         final EditText name=findViewById(R.id.name);
         final EditText email=findViewById(R.id.email);
         final EditText phone=findViewById(R.id.ph_no);
-        final EditText college=findViewById(R.id.college);
+        final EditText college=findViewById(R.id.name4);
 
         Button button=findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {              //BUTTON ON-CLICK
@@ -53,28 +59,28 @@ public class MainActivity extends AppCompatActivity
                 final String contestantEmail=email.getText().toString().trim();     //EMAIL
                 final String contestantPhone=phone.getText().toString().trim();     //PHONE
                 final String contestantCollege=college.getText().toString().trim(); //COLLEGE
-                if(!TextUtils.isEmpty(contestantName)&&
-                        !TextUtils.isEmpty(contestantEmail)&&
-                        !TextUtils.isEmpty(contestantPhone)&&
-                        !TextUtils.isEmpty(contestantCollege))
-                {
-                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
-                    {
-                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
-                        {
+//                if(!TextUtils.isEmpty(contestantName)&&
+//                        !TextUtils.isEmpty(contestantEmail)&&
+//                        !TextUtils.isEmpty(contestantPhone)&&
+//                        !TextUtils.isEmpty(contestantCollege))
+//                {
+//                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
+//                    {
+//                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
+//                        {
                             Intent intent = new Intent(MainActivity.this, Register.class);
                             startActivity(intent);
-                        }
-                        else
-                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "All fields are mandatory!", Toast.LENGTH_SHORT).show();
-                }
+//                        }
+//                        else
+//                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
+//                    }
+//                    else
+//                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                {
+//                    Toast.makeText(MainActivity.this, "All fields are mandatory!", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }
@@ -121,4 +127,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
