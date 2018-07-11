@@ -28,7 +28,6 @@ public class RegisterAdapter extends
             box = (CheckBox) itemView.findViewById(R.id.checkbox);
         }
     }
-
     @Override
     public RegisterAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
@@ -40,11 +39,13 @@ public class RegisterAdapter extends
 
         private List<Event> event;
     public List<Event> receipt=new ArrayList<>();
-    public int total=0;
+
 
     public RegisterAdapter(List<Event> events) {
             event = events;
-        }
+    }
+    Register register1=new Register();
+
     @Override
     public int getItemCount() {
         return event.size();
@@ -56,18 +57,18 @@ public class RegisterAdapter extends
         textView.setText(register.getName());
         textView = viewHolder.price;
         textView.setText(String.valueOf(register.getPrice()));
-
-
+        final CheckBox checkBox=viewHolder.box;
+        checkBox.setChecked(event.get(position).getCheck());
         viewHolder.box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int pos = viewHolder.getAdapterPosition();
-                if(viewHolder.box.isChecked()){
+                if(checkBox.isChecked()){
                     receipt.add(event.get(pos));
-                    total+=event.get(pos).getPrice();
-
-                }else{
+                    event.get(position).modify(position,true);
+                }
+                else{
+                    event.get(position).modify(position,false);
                     String temp=event.get(pos).getName();
                     for(int i=0;i<receipt.size();i++)
                     {
@@ -75,6 +76,7 @@ public class RegisterAdapter extends
                             receipt.remove(i);
                     }
                 }
+                register1.modify();
             }
         });
     }
