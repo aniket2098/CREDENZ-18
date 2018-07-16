@@ -1,5 +1,6 @@
 package com.example.admin.credenz18;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import com.google.zxing.BarcodeFormat;
@@ -7,6 +8,8 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.google.zxing.MultiFormatWriter;
@@ -21,8 +24,6 @@ public class QRCode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         imageView = findViewById(R.id.qrCode);
         try {
             bitmap = TextToImageEncode("Hello World");
@@ -30,6 +31,15 @@ public class QRCode extends AppCompatActivity {
         } catch (WriterException e) {
             e.printStackTrace();
         }
+
+        Button button=findViewById(R.id.done);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QRCode.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     Bitmap TextToImageEncode(String Value) throws WriterException {
@@ -61,5 +71,10 @@ public class QRCode extends AppCompatActivity {
         Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
         bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
         return bitmap;
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

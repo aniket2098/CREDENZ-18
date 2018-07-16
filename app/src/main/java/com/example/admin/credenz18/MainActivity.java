@@ -3,6 +3,8 @@ package com.example.admin.credenz18;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
@@ -19,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +50,10 @@ public class MainActivity extends AppCompatActivity
         spinner.setAdapter(adapter);
 
         final EditText name=findViewById(R.id.name);
+        final EditText name2=findViewById(R.id.name2);
+        final EditText name3=findViewById(R.id.name3);
+        final EditText name4=findViewById(R.id.name4);
+
         final EditText email=findViewById(R.id.email);
         final EditText phone=findViewById(R.id.ph_no);
         final EditText college=findViewById(R.id.name4);
@@ -58,29 +65,30 @@ public class MainActivity extends AppCompatActivity
                 final String contestantName=name.getText().toString().trim();       //NAME
                 final String contestantEmail=email.getText().toString().trim();     //EMAIL
                 final String contestantPhone=phone.getText().toString().trim();     //PHONE
-                final String contestantCollege=college.getText().toString().trim(); //COLLEGE
-//                if(!TextUtils.isEmpty(contestantName)&&
-//                        !TextUtils.isEmpty(contestantEmail)&&
-//                        !TextUtils.isEmpty(contestantPhone)&&
-//                        !TextUtils.isEmpty(contestantCollege))
-//                {
-//                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
-//                    {
-//                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
-//                        {
+                final String contestantName2=name2.getText().toString().trim();
+                final String contestantName3=name3.getText().toString().trim();
+                final String contestantName4=name4.getText().toString().trim();
+                if(!TextUtils.isEmpty(contestantName)&&
+                        !TextUtils.isEmpty(contestantEmail)&&
+                        !TextUtils.isEmpty(contestantPhone))
+                {
+                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
+                    {
+                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
+                        {
                             Intent intent = new Intent(MainActivity.this, Register.class);
                             startActivity(intent);
-//                        }
-//                        else
-//                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
-//                    }
-//                    else
-//                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
-//                }
-//                else
-//                {
-//                    Toast.makeText(MainActivity.this, "All fields are mandatory!", Toast.LENGTH_SHORT).show();
-//                }
+                        }
+                        else
+                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "All * marked fields are mandatory!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -91,7 +99,6 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
         }
     }
 

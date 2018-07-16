@@ -28,11 +28,11 @@ public class Register extends AppCompatActivity{
     TextView textView;
     int total;
     View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toolbar toolbar = findViewById(R.id.toolbar);
          class RegisterAdapter extends
                 RecyclerView.Adapter<RegisterAdapter.ViewHolder> {
 
@@ -45,10 +45,12 @@ public class Register extends AppCompatActivity{
                 public ViewHolder(View itemView) {
                     super(itemView);
                     event = (TextView) itemView.findViewById(R.id.event);
-                    price=itemView.findViewById(R.id.price);
+                    price = itemView.findViewById(R.id.price);
                     box = (CheckBox) itemView.findViewById(R.id.checkbox);
                 }
-            }
+             }
+
+
             @Override
             public RegisterAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 Context context = parent.getContext();
@@ -109,7 +111,6 @@ public class Register extends AppCompatActivity{
         RegisterAdapter adapter;
 
         textView = findViewById(R.id.total);
-        setSupportActionBar(toolbar);
         view = this.findViewById(android.R.id.content);
         final RecyclerView rvContacts = findViewById(R.id.rv);
         events = Event.createContactsList();
@@ -127,4 +128,10 @@ public class Register extends AppCompatActivity{
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }
