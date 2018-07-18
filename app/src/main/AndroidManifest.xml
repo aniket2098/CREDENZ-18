@@ -26,7 +26,7 @@
         <activity
             android:name=".Prev"
             android:label="@string/title_activity_prev"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".QRCode"
             android:label="@string/title_activity_qrcode"

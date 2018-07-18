@@ -68,29 +68,30 @@ public class MainActivity extends AppCompatActivity
                 final String contestantName2=name2.getText().toString().trim();
                 final String contestantName3=name3.getText().toString().trim();
                 final String contestantName4=name4.getText().toString().trim();
-                if(!TextUtils.isEmpty(contestantName)&&
-                        !TextUtils.isEmpty(contestantEmail)&&
-                        !TextUtils.isEmpty(contestantPhone))
-                {
-                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
-                    {
-                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
-                        {
+//                if(!TextUtils.isEmpty(contestantName)&&
+//                        !TextUtils.isEmpty(contestantEmail)&&
+//                        !TextUtils.isEmpty(contestantPhone))
+//                {
+//                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
+//                    {
+//                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
+//                        {
                             Intent intent = new Intent(MainActivity.this, Register.class);
+                            intent.putExtra("name",contestantName);
                             startActivity(intent);
-                        }
-                        else
-                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "All * marked fields are mandatory!", Toast.LENGTH_SHORT).show();
-                }
+//                        }
+//                        else
+//                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
+//                    }
+//                    else
+//                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                {
+//                    Toast.makeText(MainActivity.this, "All * marked fields are mandatory!", Toast.LENGTH_SHORT).show();
+//                }
             }
-        });
+       });
     }
 
     @Override
@@ -125,7 +126,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.register) {
-
+            Intent intent = new Intent(MainActivity.this, Prev.class);
+            startActivity(intent);
         }
         else if (id == R.id.pre_reg) {
 

@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -50,6 +50,7 @@
                 android:layout_marginEnd="8dp"
                 android:gravity="center"
                 android:text="Registration details"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <EditText
@@ -63,6 +64,7 @@
                 android:hint="*Participant 1"
                 android:inputType="textPersonName"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +81,7 @@
                 android:hint="Participant 2"
                 android:inputType="textPersonName"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +98,7 @@
                 android:hint="Participant 3"
                 android:inputType="textPersonName"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
@@ -111,6 +115,7 @@
                 android:hint="Participant 4"
                 android:inputType="textPersonName"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +132,7 @@
                 android:hint="*E-mail"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +149,7 @@
                 android:hint="*Phone no."
                 android:inputType="phone"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
