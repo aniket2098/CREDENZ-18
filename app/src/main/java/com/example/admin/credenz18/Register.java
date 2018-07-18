@@ -1,9 +1,7 @@
 package com.example.admin.credenz18;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -11,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,16 +28,9 @@ public class Register extends AppCompatActivity{
     int total;
     View view;
     PrevData prevData;
-    public List<Event> receipt=new ArrayList<>();
+    public ArrayList<Event> receipt=new ArrayList<>();
 
 
-    private static String TABLE_NAME="prev_reg";
-    private static String COLUMN1="name";
-    private static String COLUMN2="date";
-    private static String COLUMN3="total";
-    private static String COLUMN4="total_events";
-    private static String COLUMN5="unique_id";
-    SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,38 +134,12 @@ public class Register extends AppCompatActivity{
 
     public void database()
     {
+        SQLiteDatabase sqLiteDatabase=openOrCreateDatabase("previousData",MODE_PRIVATE,null);
         Bundle bundle = getIntent().getExtras();
-        String name=bundle.getString("name");
         Date c=Calendar.getInstance().getTime();
         SimpleDateFormat d=new SimpleDateFormat("dd-MM-yyyy");
-        prevData=new PrevData(name,"UNIQUE",total,receipt.size(),d.format(c));
-
-        sqLiteDatabase=openOrCreateDatabase("previousData",MODE_PRIVATE,null);
-
-        sqLiteDatabase.execSQL("create table if not exists " + TABLE_NAME + "("
-                + COLUMN1 + " varchar(30)" + ","
-                + COLUMN2 + " varchar(30)" + ","
-                + COLUMN3 + " integer"  + ","
-                + COLUMN4 + " integer"  + ","
-                + COLUMN5 + " varchar(30)"  +
-                ");" );
-
-        ContentValues contentValues=new ContentValues();
-
-        contentValues.put(COLUMN1,prevData.getRegName());
-        contentValues.put(COLUMN2,prevData.getRegDate());
-        contentValues.put(COLUMN3,prevData.gettotal());
-        contentValues.put(COLUMN4,prevData.getNoOfEvents());
-        contentValues.put(COLUMN5,prevData.getUniId());
-
-        sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
-
-        Cursor cursor=sqLiteDatabase.rawQuery("select * from " + TABLE_NAME + ";",null);
-
-        cursor.moveToNext();
-
-        cursor.close();
-        sqLiteDatabase.close();
+        prevData=new PrevData(bundle.getString("name"),bundle.getString("name2"),bundle.getString("name3"),bundle.getString("name4"),bundle.getString("phone"),bundle.getString("email"),bundle.getString("phone"),total,receipt.size(),d.format(c),bundle.getString("college"),receipt);
+        Database database=new Database(prevData, sqLiteDatabase);
     }
     @Override
     public void onBackPressed() {

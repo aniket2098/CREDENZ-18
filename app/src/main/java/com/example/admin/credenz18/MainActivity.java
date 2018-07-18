@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Spinner spinner = (Spinner) findViewById(R.id.college);
+        final Spinner spinner = (Spinner) findViewById(R.id.college);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.colleges_array, android.R.layout.simple_spinner_item);
@@ -68,28 +68,35 @@ public class MainActivity extends AppCompatActivity
                 final String contestantName2=name2.getText().toString().trim();
                 final String contestantName3=name3.getText().toString().trim();
                 final String contestantName4=name4.getText().toString().trim();
-//                if(!TextUtils.isEmpty(contestantName)&&
-//                        !TextUtils.isEmpty(contestantEmail)&&
-//                        !TextUtils.isEmpty(contestantPhone))
-//                {
-//                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
-//                    {
-//                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
-//                        {
+                final String contestantCollege=spinner.getSelectedItem().toString();
+                if(!TextUtils.isEmpty(contestantName)&&
+                        !TextUtils.isEmpty(contestantEmail)&&
+                        !TextUtils.isEmpty(contestantPhone))
+                {
+                    if( Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
+                    {
+                        if( android.util.Patterns.PHONE.matcher(phone.getText()).matches())         //SEND INFORMATION TO SERVER AFTER THIS
+                        {
                             Intent intent = new Intent(MainActivity.this, Register.class);
                             intent.putExtra("name",contestantName);
+                            intent.putExtra("name2",contestantName2);
+                            intent.putExtra("name3",contestantName3);
+                            intent.putExtra("name4",contestantName4);
+                            intent.putExtra("email",contestantEmail);
+                            intent.putExtra("phone",contestantPhone);
+                            intent.putExtra("college",contestantCollege);
                             startActivity(intent);
-//                        }
-//                        else
-//                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
-//                    }
-//                    else
-//                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
-//                }
-//                else
-//                {
-//                    Toast.makeText(MainActivity.this, "All * marked fields are mandatory!", Toast.LENGTH_SHORT).show();
-//                }
+                        }
+                        else
+                            Toast.makeText(MainActivity.this, "Invalid Phone no.!", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        Toast.makeText(MainActivity.this, "Invaid Email!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "All * marked fields are mandatory!", Toast.LENGTH_SHORT).show();
+                }
             }
        });
     }
@@ -100,6 +107,9 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+
+            super.onBackPressed();
+
         }
     }
 

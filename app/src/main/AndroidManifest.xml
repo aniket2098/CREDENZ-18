@@ -20,14 +20,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:noHistory="true"
             android:name=".Register"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme" />
         <activity
+            android:noHistory="true"
             android:name=".Prev"
             android:label="@string/title_activity_prev"
             android:theme="@style/AppTheme" />
         <activity
+            android:noHistory="true"
             android:name=".QRCode"
             android:label="@string/title_activity_qrcode"
             android:theme="@style/AppTheme"></activity>

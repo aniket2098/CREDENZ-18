@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,12 +32,25 @@ public class Prev extends AppCompatActivity {
 
         final RecyclerView rv= findViewById(R.id.registrations);
 
+        try
+        {
         SQLiteDatabase sqLiteDatabase=openOrCreateDatabase("previousData",MODE_PRIVATE,null);
         Cursor cursor=sqLiteDatabase.rawQuery("select * from " + "prev_reg" + ";",null);
 
         if (cursor.moveToFirst()){
             do{
-                prevData=new PrevData(cursor.getString(cursor.getColumnIndex("name")),cursor.getString(cursor.getColumnIndex("unique_id")),cursor.getInt(cursor.getColumnIndex("total")),cursor.getInt(cursor.getColumnIndex("total_events")),cursor.getString(cursor.getColumnIndex("date")));
+                prevData=new PrevData(cursor.getString(cursor.getColumnIndex("name")),
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        cursor.getString(cursor.getColumnIndex("unique_id")),
+                        cursor.getInt(cursor.getColumnIndex("total")),
+                        cursor.getInt(cursor.getColumnIndex("total_events")),
+                        cursor.getString(cursor.getColumnIndex("date")),
+                        cursor.getString(cursor.getColumnIndex("college")),
+                        null);
                 registrations.add(prevData);
             }while(cursor.moveToNext());
         }
@@ -45,5 +59,11 @@ public class Prev extends AppCompatActivity {
         RegAdapter adapter = new RegAdapter(registrations);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(Prev.this));
+        }
+        catch(Exception e)
+        {
+            TextView textView=findViewById(R.id.message);
+            textView.setVisibility(View.VISIBLE);
+        }
     }
 }
