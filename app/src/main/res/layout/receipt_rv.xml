@@ -8,11 +8,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_margin="12dp"
         android:background="@android:color/transparent"
-        android:padding="5dp"
+        android:padding="15dp"
         app:cardBackgroundColor="@android:color/transparent"
-        app:cardElevation="@dimen/fab_margin">
+        app:cardElevation="35dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
