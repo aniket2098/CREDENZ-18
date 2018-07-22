@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        getWindow().setBackgroundDrawableResource(R.drawable.bg);
+
         final Spinner spinner = (Spinner) findViewById(R.id.college);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

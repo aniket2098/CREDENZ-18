@@ -31,6 +31,7 @@ public class Register extends AppCompatActivity{
     public ArrayList<Event> receipt=new ArrayList<>();
 
 
+    private ArrayList<Event> event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +65,9 @@ public class Register extends AppCompatActivity{
                 return viewHolder;
             }
 
-            private List<Event> event;
 
 
-            public RegisterAdapter(List<Event> events) {
+            public RegisterAdapter(ArrayList<Event> events) {
                 event = events;
             }
 
@@ -90,11 +90,11 @@ public class Register extends AppCompatActivity{
                         int pos = viewHolder.getAdapterPosition();
                         if(checkBox.isChecked()){
                             receipt.add(event.get(pos));
-                            event.get(position).modify(position,true);
+                            event.get(position).modify(position,true,event);
                             total+=event.get(position).getPrice();
                         }
                         else{
-                            event.get(position).modify(position,false);
+                            event.get(position).modify(position,false,event);
                             String temp=event.get(pos).getName();
                             for(int i=0;i<receipt.size();i++)
                             {
@@ -116,7 +116,7 @@ public class Register extends AppCompatActivity{
         textView = findViewById(R.id.total);
         view = this.findViewById(android.R.id.content);
         final RecyclerView rvContacts = findViewById(R.id.rv);
-        events = Event.createContactsList();
+        events =createContactsList();
         adapter = new RegisterAdapter(events);
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
@@ -133,13 +133,38 @@ public class Register extends AppCompatActivity{
         });
     }
 
+    public static ArrayList<Event> createContactsList() {
+        ArrayList<Event> events = new ArrayList<>();
+
+        events.clear();
+        events.add(new Event("  B-Plan",10,false));
+        events.add(new Event("  Contraption",20,false));
+        events.add(new Event("  Clash",30,false));
+        events.add(new Event("  Cretronix",40,false));
+        events.add(new Event("  Croodle",50,false));
+        events.add(new Event("  MAD Talks",60,false));
+        events.add(new Event("  NTH",70,false));
+        events.add(new Event("  Paper\n  Presentation",80,false));
+        events.add(new Event("  Pixelate",90,false));
+        events.add(new Event("  Roboliga",100,false));
+        events.add(new Event("  Reverse\n  Coding",120,false));
+        events.add(new Event("  Quiz",130,false));
+        events.add(new Event("  Software\n  Development",140,false));
+        events.add(new Event("  Seminars",150,false));
+        events.add(new Event("  Web Weaver",160,false));
+        events.add(new Event("  Wall Street",170,false));
+        events.add(new Event("  Xodia",180,false));
+        events.add(new Event("  Workshop",190,false));
+        return events;
+    }
+
     public void database()
     {
         SQLiteDatabase sqLiteDatabase=openOrCreateDatabase("previousData",MODE_PRIVATE,null);
         Bundle bundle = getIntent().getExtras();
         Date c=Calendar.getInstance().getTime();
         SimpleDateFormat d=new SimpleDateFormat("dd-MM-yyyy");
-        prevData=new PrevData(bundle.getString("name"),bundle.getString("name2"),bundle.getString("name3"),bundle.getString("name4"),bundle.getString("phone"),bundle.getString("email"),bundle.getString("phone"),total,receipt.size(),d.format(c),bundle.getString("college"),receipt);
+        prevData=new PrevData(bundle.getString("name"),bundle.getString("name2"),bundle.getString("name3"),bundle.getString("name4"),bundle.getString("phone"),bundle.getString("email"),bundle.getString("phone"),total,receipt.size(),d.format(c),bundle.getString("college"),event);
         Database database=new Database(prevData, sqLiteDatabase);
     }
     @Override
