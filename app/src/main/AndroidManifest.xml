@@ -20,20 +20,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:noHistory="true"
             android:name=".Register"
-            android:label="Credenz'18"
+            android:label="Credenz&apos;18"
+            android:noHistory="true"
             android:theme="@style/AppTheme" />
         <activity
-            android:noHistory="true"
             android:name=".Prev"
-            android:label="Credenz'18"
+            android:label="Credenz&apos;18"
+            android:noHistory="true"
             android:theme="@style/AppTheme" />
         <activity
-            android:noHistory="true"
             android:name=".QRCode"
-            android:label="Credenz'18"
-            android:theme="@style/AppTheme"></activity>
+            android:label="Credenz&apos;18"
+            android:noHistory="true"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Details"></activity>
     </application>
 
 </manifest>
