@@ -34,23 +34,23 @@ class ReceiptItems extends
         return viewHolder;
     }
 
-    private ArrayList<PrevData> data;
+    private ArrayList<String> event;
 
 
-    public ReceiptItems(SQLiteDatabase sqLiteDatabase) {
+    public ReceiptItems(ArrayList<String> events) {
 
-
+        event=events;
     }
 
 
     @Override
     public void onBindViewHolder(final ReceiptItems.ViewHolder viewHolder, final int position) {
-        final PrevData prevData = data.get(position);
-        viewHolder.name.setText(prevData.getRegName());
+//        final PrevData prevData = data.get(position);
+        viewHolder.name.setText(event.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return event.size();
     }
 }

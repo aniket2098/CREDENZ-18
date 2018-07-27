@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,19 +90,23 @@ public class Register extends AppCompatActivity{
                     public void onClick(View view) {
                         int pos = viewHolder.getAdapterPosition();
                         if(checkBox.isChecked()){
-                            receipt.add(event.get(pos));
+//                            Log.i("remove", events.get(position).getName());
+
+                            receipt.add(event.get(position));
                             event.get(position).modify(position,true,event);
                             total+=event.get(position).getPrice();
                         }
                         else{
                             event.get(position).modify(position,false,event);
-                            String temp=event.get(pos).getName();
+                            String temp=event.get(position).getName();
                             for(int i=0;i<receipt.size();i++)
                             {
                                 if(temp.equals(receipt.get(i).getName()))
                                 {
                                     receipt.remove(i);
-                                    total-=event.get(pos).getPrice();
+                                    total-=event.get(position).getPrice();
+//                                    Log.i("remove", Integer.toString(receipt.size()));
+
                                 }
 
                             }
@@ -126,6 +131,8 @@ public class Register extends AppCompatActivity{
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 database();
                 Intent intent = new Intent(Register.this, QRCode.class);
                 startActivity(intent);
@@ -137,24 +144,24 @@ public class Register extends AppCompatActivity{
         ArrayList<Event> events = new ArrayList<>();
 
         events.clear();
-        events.add(new Event("  B-Plan",10,false));
-        events.add(new Event("  Contraption",20,false));
-        events.add(new Event("  Clash",30,false));
-        events.add(new Event("  Cretronix",40,false));
-        events.add(new Event("  Croodle",50,false));
-        events.add(new Event("  MAD Talks",60,false));
-        events.add(new Event("  NTH",70,false));
-        events.add(new Event("  Paper\n  Presentation",80,false));
-        events.add(new Event("  Pixelate",90,false));
-        events.add(new Event("  Roboliga",100,false));
-        events.add(new Event("  Reverse\n  Coding",120,false));
-        events.add(new Event("  Quiz",130,false));
-        events.add(new Event("  Software\n  Development",140,false));
-        events.add(new Event("  Seminars",150,false));
-        events.add(new Event("  Web Weaver",160,false));
-        events.add(new Event("  Wall Street",170,false));
-        events.add(new Event("  Xodia",180,false));
-        events.add(new Event("  Workshop",190,false));
+        events.add(new Event("B-Plan",10,false));
+        events.add(new Event("Contraption",20,false));
+        events.add(new Event("Clash",30,false));
+        events.add(new Event("Cretronix",40,false));
+        events.add(new Event("Croodle",50,false));
+        events.add(new Event("MAD Talks",60,false));
+        events.add(new Event("NTH",70,false));
+        events.add(new Event("Paper\nPresentation",80,false));
+        events.add(new Event("Pixelate",90,false));
+        events.add(new Event("Roboliga",100,false));
+        events.add(new Event("Reverse\nCoding",120,false));
+        events.add(new Event("Quiz",130,false));
+        events.add(new Event("Software\nDevelopment",140,false));
+        events.add(new Event("Seminars",150,false));
+        events.add(new Event("Web Weaver",160,false));
+        events.add(new Event("Wall Street",170,false));
+        events.add(new Event("Xodia",180,false));
+        events.add(new Event("Workshop",190,false));
         return events;
     }
 

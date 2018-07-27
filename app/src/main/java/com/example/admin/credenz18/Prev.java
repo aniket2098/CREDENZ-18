@@ -27,8 +27,9 @@ public class Prev extends AppCompatActivity {
 
     private ArrayList<PrevData> registrations=new ArrayList<>();
     PrevData prevData;
-
-    @Override
+Prev()
+{}
+@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prev);
@@ -59,7 +60,7 @@ public class Prev extends AppCompatActivity {
         }
         cursor.close();
 
-        RegAdapter adapter = new RegAdapter(registrations);
+        RegAdapter adapter = new RegAdapter(registrations,Prev.this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(Prev.this));
         }
@@ -70,25 +71,13 @@ public class Prev extends AppCompatActivity {
         }
 
 
-        rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                Intent intent=new Intent(Prev.this,Details.class);
-                intent.putExtra("id",((TextView)rv.findViewById(R.id.uniId)).getText().toString());
-                SQLiteDatabase sqLiteDatabase=openOrCreateDatabase("previousData",MODE_PRIVATE,null);
 
-                return false;
-            }
 
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
     }
+    public void goToNext(String uid)
+    {
+
+        Log.i("touch", "onInterceptTouchEvent: ");
+    }
+
 }

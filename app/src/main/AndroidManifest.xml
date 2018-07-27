@@ -27,7 +27,6 @@
         <activity
             android:name=".Prev"
             android:label="Credenz&apos;18"
-            android:noHistory="true"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".QRCode"

@@ -73,13 +73,16 @@ public class Database{
         contentValues.clear();
         for(int i=0;i<prevData.getReceipt().size();i++)
         {
+//            Log.i("bool", Boolean.toString(prevData.getReceipt().get(i).getCheck()));
             if(prevData.getReceipt().get(i).getCheck()) {
                 contentValues.put(UID, prevData.getUniId());
                 contentValues.put(EVENT, prevData.getReceipt().get(i).getName());
+                sqLiteDatabase.insert("EVENTS",null,contentValues);
             }
 
-            sqLiteDatabase.insert("EVENTS",null,contentValues);
         }
+
+
         sqLiteDatabase.close();
         serverdata=new ServerData();
         serverdata.name=prevData.getRegName();
