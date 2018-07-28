@@ -34,6 +34,7 @@
             android:noHistory="true"
             android:theme="@style/AppTheme" />
         <activity android:name=".Details"></activity>
+
     </application>
 
 </manifest>

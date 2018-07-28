@@ -8,6 +8,6 @@
         <item>Jupiter</item>
         <item>Saturn</item>
         <item>Uranus</item>
-        <item>Neptune</item>
+        <item>Other</item>
     </string-array>
 </resources>

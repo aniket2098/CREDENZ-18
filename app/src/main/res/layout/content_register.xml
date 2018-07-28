@@ -75,7 +75,8 @@
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
             android:text="Register"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:elevation="3dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
