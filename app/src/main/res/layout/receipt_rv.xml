@@ -13,7 +13,7 @@
         android:padding="15dp"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="5dp"
-        app:cardElevation="35dp">
+        app:cardElevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,10 +38,12 @@
                 android:layout_height="59dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
                 android:gravity="left|center"
                 android:text="Name"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="26sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,7 +76,7 @@
 
             <TextView
                 android:id="@+id/totEvents"
-                android:layout_width="215dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -93,7 +95,7 @@
 
             <TextView
                 android:id="@+id/totPrice"
-                android:layout_width="215dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"

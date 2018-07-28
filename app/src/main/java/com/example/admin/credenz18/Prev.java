@@ -27,8 +27,7 @@ public class Prev extends AppCompatActivity {
 
     private ArrayList<PrevData> registrations=new ArrayList<>();
     PrevData prevData;
-Prev()
-{}
+
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

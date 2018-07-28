@@ -6,11 +6,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/register"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Register" />
-        <item
-            android:id="@+id/pre_reg"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@android:drawable/ic_menu_recent_history"
             android:title="Previous Registrations" />
+        <item
+            android:id="@+id/bug"
+            android:icon="@android:drawable/stat_notify_error"
+            android:title="Report a Bug" />
     </group>
         </menu>

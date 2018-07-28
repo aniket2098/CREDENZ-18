@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, Prev.class);
             startActivity(intent);
         }
-        else if (id == R.id.pre_reg) {
+        else if (id == R.id.bug) {
 
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

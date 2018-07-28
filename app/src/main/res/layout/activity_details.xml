@@ -9,9 +9,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="wrap_content"
-        android:layout_height="225dp"
-        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:layout_margin="15dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -34,9 +34,9 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="149dp"
-                android:layout_height="101dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="146dp"
+                android:layout_height="117dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/credenzlogo" />
@@ -69,7 +69,7 @@
             <TextView
                 android:id="@+id/uniqueId"
                 android:layout_width="223dp"
-                android:layout_height="28dp"
+                android:layout_height="33dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
@@ -78,7 +78,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
